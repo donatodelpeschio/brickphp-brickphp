@@ -5,6 +5,17 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+# Spostati nella root del progetto (una cartella sopra /bin)
+cd "$(dirname "$0")/.."
+
+echo "Eseguendo setup in: $(pwd)" # Debug per vedere se siamo nel posto giusto
+
+if [ ! -f ".env.example" ]; then
+    echo "❌ Errore: .env.example non trovato in $(pwd)!"
+    ls -la # Mostra i file presenti per debug
+    exit 1
+fi
+
 echo -e "${BLUE}🧱 BrickPHP: Configurazione Iniziale del Progetto${NC}"
 echo "----------------------------------------------------"
 
