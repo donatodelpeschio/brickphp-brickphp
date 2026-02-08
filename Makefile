@@ -19,20 +19,21 @@ APP_CONTAINER = $(PROJECT_NAME)_app
 install:
 	@chmod +x bin/setup.sh
 	@./bin/setup.sh
-	@# Ricarichiamo la variabile PROJECT_NAME dopo lo script (opzionale ma utile)
+	@# Ricarichiamo le variabili o forziamo l'uso del nome appena generato
 	@echo "📦 Installazione dipendenze..."
 	docker compose run --rm app composer install
-	@echo "🚀 Avvio dei container in background..."
+	@echo "🚀 Avvio stabile dei container..."
 	docker compose up -d
-	@echo "📂 Creazione cartelle storage e permessi..."
-	@# Usiamo $(PROJECT_NAME)_app per essere sicuri che il nome sia dinamico
+	@echo "⏳ Attesa inizializzazione (5s)..."
+	@sleep 5
+	@echo "📂 Configurazione storage e permessi..."
+	@# Usiamo variabili dinamiche per i nomi dei container
 	docker exec -it $(PROJECT_NAME)_app mkdir -p storage/cache storage/logs storage/sessions
 	docker exec -it $(PROJECT_NAME)_app chown -R www-data:www-data storage
 	docker exec -it $(PROJECT_NAME)_app chmod -R 775 storage
 	@echo "🗄️ Esecuzione migrazioni..."
-	@sleep 5
 	docker exec -it $(PROJECT_NAME)_app php brick migrate
-	@echo "✨ BrickPHP pronto! Naviga su http://localhost:8080"
+	@echo "✨ BrickPHP è pronto! Naviga su http://localhost:8080"
 
 up:
 	docker-compose up -d
