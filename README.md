@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/mockup.png" alt="BrickPHP Mockup" width="800">
+  <img src="docs/images/mockup.jpg" alt="BrickPHP Mockup" width="800">
 </p>
 
 # 🧱 BrickPHP Skeleton
@@ -15,7 +15,7 @@ Lo Skeleton è il punto di partenza ufficiale per costruire le tue applicazioni,
 
 
 
-![Schema MVC](docs/images/mvc.png)
+![Schema MVC](docs/images/mvc.jpg)
 
 
 ---
