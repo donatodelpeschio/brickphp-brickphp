@@ -1,6 +1,13 @@
 {
   "name": "brickphp/brickphp",
   "description": "The official skeleton for BrickPHP framework",
+  "authors": [
+    {
+      "name": "Donato",
+      "email": "donato@example.com",
+      "role": "Developer"
+    }
+  ],
   "type": "project",
   "license": "MIT",
   "require": {
